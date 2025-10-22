@@ -37,13 +37,20 @@ export const AuthProvider = ({ children }) => {
     setUserId(res.data.userId);
   };
 
+  const loginWithOtp = async ({ otpCode }) => {
+    const res = await client.post("/api/v3/auth/login-otp", { otpCode });
+    await AsyncStorage.setItem("accessToken", res.data.accessToken);
+    setUserId(res.data.userId);
+  };
+
   const logout = async () => {
     await AsyncStorage.clear();
     setUserId(null);
   };
 
   return (
-    <AuthContext.Provider value={{ userId, loading, loginWithEmail, loginWithDocument, logout }}>
+    <AuthContext.Provider value={{ userId, loading, loginWithEmail, loginWithDocument, loginWithOtp, logout }}>
+    <AuthContext.Provider value={{ userId, loading, loginWithEmail, loginWithDocument, loginWithOtp, logout }}></AuthContext.Provider>
       {children}
     </AuthContext.Provider>
   );

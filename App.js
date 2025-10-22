@@ -1,6 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import OtpLoginScreen from './src/screens/OtpLoginScreen';
 import { AuthProvider } from "./src/context/AuthContext";
 
 import LoginScreen from "./src/screens/LoginScreen";
@@ -17,6 +18,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="OtpLogin" component={OtpLoginScreen} />
           <Stack.Screen name="Products" component={ProductsList} />
           <Stack.Screen name="ProductDetail" component={ProductDetail} />
           <Stack.Screen name="ProductForm" component={ProductForm} />

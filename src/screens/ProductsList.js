@@ -26,7 +26,10 @@ export default function ProductsList({ navigation }) {
   return (
     <View style={styles.container}>
       <Button title="Nuevo Producto" onPress={() => navigation.navigate("ProductForm")} />
-      <Button title="Cerrar Sesión" onPress={logout} />
+      <Button title="Cerrar Sesión" onPress={() => {
+          logout();
+          navigation.replace("Login");
+        }} />
       <FlatList
         data={products}
         keyExtractor={p => String(p.id)}

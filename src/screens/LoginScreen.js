@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity  } from "react-native";
 import { AuthContext } from "../context/AuthContext";
 
 export default function LoginScreen({ navigation }) {
@@ -36,6 +36,9 @@ export default function LoginScreen({ navigation }) {
       {error && <Text style={styles.error}>{error}</Text>}
       <Button title="Entrar con Email" onPress={handleEmailLogin} />
       <Button title="Entrar con Documento" onPress={handleDocumentLogin} />
+      <TouchableOpacity onPress={() => navigation.navigate('OtpLogin')} style={{ marginTop: 20 }}>
+        <Text style={{ color: 'blue', textAlign: 'center' }}>Iniciar sesión con OTP</Text>
+      </TouchableOpacity>
     </View>
   );
 }
